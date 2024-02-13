@@ -39,12 +39,16 @@ def main():
     if len(sys.argv) != 3:
       print("Error: Please specify the path to requirements.txt.")
       return
+    requirements_file = sys.argv[2]
     if not os.path.exists(requirements_file):
       print("Error: requirements.txt file not found!")
       return
+    packages = read_requirements(requirements_file)
+
+  
   else:
     # Manually enter package names
-    packages = syst.argv[1:]
+    packages = sys.argv[1:]
 
   missing_dependencies = check_dependencies(packages)
 
