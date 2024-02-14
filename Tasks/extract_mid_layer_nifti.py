@@ -60,10 +60,13 @@ for patient_folder in os.listdir(data_dir):
 
     # Get the mid slice of Z-axis for image
     z_mid = data["image"].shape[2] // 2
-    mid_slice_image_transverse_np = data["image"][:,:,z_mid]
+    mid_slice_image_transverse_np = data["image"][:,:,z_mid].numpy()
+    mid_slice_image_transverse_np = mid_slice_image_transverse_np.astype(np.float32)
 
     # Get the mid slice of Z-axis for label
-    mid_slice_label_transverse_np = data["label"][:,:,z_mid]
+    mid_slice_image_transverse_np = data["label"][:,:,z_mid].numpy()
+    mid_slice_image_transverse_np = mid_slice_label_transverse_np.astype(np.float32)
+    
 
     # This section for nifti file, alternative method will be to save the image straight without nifti being generated
     # Save extracted images
